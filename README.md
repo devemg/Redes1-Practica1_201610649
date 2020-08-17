@@ -4,45 +4,54 @@ Generación y configuración de una topología de red pequeña formada por 3 vpc
 ## Topología de Red
 La topología implementada consiste en 4 host, dos host conectados a un switch que conforman el segmento de 
 
-![image](https://concepto.de/wp-content/uploads/2015/03/paisaje-e1549600034372.jpg)
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/project.png)
 
 ## Configuración
 
 ### Configuración de host
 Para realizar la configuración se debe tener el dispositivo encendido e ingresar por medio de la terminal. 
 
-1. Ejecutar el siguiente comando para verificar la información de red de la computadora.
- ``` show ip ```
-2. Con el siguiente comando configurar la IP y la puerta de enlace. 
- ```ip <IP> <GATEWAY>```
-3. Guardar la configuración con el comando 
-   ```save ```
+1. Ejecutar el siguiente comando para verificar la información de red de la computadora: `show ip`
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host-step-1.png)
+
+2. Con el siguiente comando configurar la IP y la puerta de enlace:`ip <IP> <GATEWAY>`
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host-step-2.png)
+ 
+3. Guardar la configuración con el comando `save `
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host-step-3.png)
+   
 ### Configuración de Router
 Para realizar la configuración se debe tener el dispositivo encendido e ingresar por medio de la terminal. 
 
-Verificar el estado de las interfaces del router con el comando 
-  ```Sh ip int brief```
-
-1. Ejecutar siguiente comando para etrar al menú de configuración del router
+1. Verificar el estado de las interfaces del router con el comando: 
+  ```sh ip int brief```
+  
+2. Ejecutar siguiente comando para etrar al menú de configuración del router:
     ```conf t ```
-2. Indicar la interfaz a configurar con el comando 
+        
+3. Indicar la interfaz a configurar con el comando 
   ```int f0/ <x>```
 en donde x es el número identificador de la interfaz
 
-3. Ejecutar el siguiente comando para configurar la IP de la interfaz
+4. Ejecutar el siguiente comando para configurar la IP de la interfaz:
   ```ip address <IP> <MASCARA DE RED>```
 
-4. Activar la interfaz con el comando 
+5. Activar la interfaz con el comando 
   ```no shut```
 
-5. Salir de la configuración de la interfaz 
-  ```exit```
-6. Salir de la configuración del router con el comando
-  ```exit```
+6. Salir de la configuración de la interfaz con el comando  `exit`
+  
+7. Configurar la segunda interfaz para el segmento de red 192.168.14.0 siguiendo los pasos anteriores
 
-7. Guardar la configuración del router con el comando 
+8. Salir de la configuración del router con el comando
+  ```exit```
+9. Guardar la configuración del router con el comando 
   ```wr```
+  
+Finalmente al ejecutar el comando `sh ip int brief` se puede observar el cambio de la configuración del router
 
 ## Glosario
 
