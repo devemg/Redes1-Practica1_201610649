@@ -93,37 +93,6 @@
         "links": [
             {
                 "filters": {},
-                "link_id": "9b5b27ca-5dfa-46b7-a4a5-7d53d08588cd",
-                "nodes": [
-                    {
-                        "adapter_number": 0,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "e0",
-                            "x": 56,
-                            "y": -2
-                        },
-                        "node_id": "8b80fc2f-f86f-47fd-bc1a-7ffdf211d61d",
-                        "port_number": 0
-                    },
-                    {
-                        "adapter_number": 0,
-                        "label": {
-                            "rotation": 0,
-                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                            "text": "e1",
-                            "x": 11,
-                            "y": 48
-                        },
-                        "node_id": "febda868-76a8-42d4-b09f-33b4250eb57c",
-                        "port_number": 1
-                    }
-                ],
-                "suspend": false
-            },
-            {
-                "filters": {},
                 "link_id": "9092b28a-fd3b-4fdc-9be6-fa95df87e58b",
                 "nodes": [
                     {
@@ -273,6 +242,37 @@
                         },
                         "node_id": "8fb93d22-6677-4536-968a-663a406bb723",
                         "port_number": 0
+                    }
+                ],
+                "suspend": false
+            },
+            {
+                "filters": {},
+                "link_id": "ed0002d2-add1-4fdb-ae73-ea3357a81e53",
+                "nodes": [
+                    {
+                        "adapter_number": 0,
+                        "label": {
+                            "rotation": 0,
+                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                            "text": "e0",
+                            "x": 56,
+                            "y": -2
+                        },
+                        "node_id": "4096c856-22fd-4cec-81fc-59f5167019fb",
+                        "port_number": 0
+                    },
+                    {
+                        "adapter_number": 0,
+                        "label": {
+                            "rotation": 0,
+                            "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                            "text": "e1",
+                            "x": 11,
+                            "y": 48
+                        },
+                        "node_id": "febda868-76a8-42d4-b09f-33b4250eb57c",
+                        "port_number": 1
                     }
                 ],
                 "suspend": false
@@ -441,45 +441,6 @@
             },
             {
                 "compute_id": "local",
-                "console": null,
-                "console_auto_start": false,
-                "console_type": "none",
-                "custom_adapters": [],
-                "first_port_name": "",
-                "height": 59,
-                "label": {
-                    "rotation": 0,
-                    "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
-                    "text": "TinyCore-1",
-                    "x": -11,
-                    "y": -25
-                },
-                "locked": true,
-                "name": "TinyCore-1",
-                "node_id": "8b80fc2f-f86f-47fd-bc1a-7ffdf211d61d",
-                "node_type": "virtualbox",
-                "port_name_format": "Ethernet{0}",
-                "port_segment_size": 0,
-                "properties": {
-                    "adapter_type": "Intel PRO/1000 MT Desktop (82540EM)",
-                    "adapters": 1,
-                    "headless": false,
-                    "linked_clone": false,
-                    "on_close": "power_off",
-                    "ram": 1024,
-                    "usage": "",
-                    "use_any_adapter": false,
-                    "vmname": "TinyCore"
-                },
-                "symbol": ":/symbols/vbox_guest.svg",
-                "template_id": "f49b3db7-5cde-4ed9-a52e-61226c2b87ab",
-                "width": 65,
-                "x": -355,
-                "y": 114,
-                "z": 1
-            },
-            {
-                "compute_id": "local",
                 "console": 5000,
                 "console_auto_start": false,
                 "console_type": "telnet",
@@ -620,6 +581,45 @@
                 "width": 66,
                 "x": 5,
                 "y": -174,
+                "z": 1
+            },
+            {
+                "compute_id": "local",
+                "console": null,
+                "console_auto_start": false,
+                "console_type": "none",
+                "custom_adapters": [],
+                "first_port_name": "",
+                "height": 59,
+                "label": {
+                    "rotation": 0,
+                    "style": "font-family: TypeWriter;font-size: 10.0;font-weight: bold;fill: #000000;fill-opacity: 1.0;",
+                    "text": "TiniCore-1",
+                    "x": -9,
+                    "y": -25
+                },
+                "locked": false,
+                "name": "TiniCore-1",
+                "node_id": "4096c856-22fd-4cec-81fc-59f5167019fb",
+                "node_type": "virtualbox",
+                "port_name_format": "Ethernet{0}",
+                "port_segment_size": 0,
+                "properties": {
+                    "adapter_type": "Intel PRO/1000 MT Desktop (82540EM)",
+                    "adapters": 1,
+                    "headless": false,
+                    "linked_clone": false,
+                    "on_close": "power_off",
+                    "ram": 1024,
+                    "usage": "",
+                    "use_any_adapter": false,
+                    "vmname": "TiniCore"
+                },
+                "symbol": ":/symbols/vbox_guest.svg",
+                "template_id": "5e095914-4a82-4277-bf5f-1e2f5bee53c0",
+                "width": 65,
+                "x": -356,
+                "y": 118,
                 "z": 1
             }
         ]
