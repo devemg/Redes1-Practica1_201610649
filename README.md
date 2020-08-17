@@ -1,58 +1,161 @@
 # Redes1-Practica1
-Generación y configuración de una topología de red pequeña formada por 3 vpc, una vm (tiny linux), dos switch capa 2 y un router.
+Generación y configuración de una topología de red pequeña simulada en GNS3.
 
 ## Topología de Red
-La topología implementada consiste en 4 host, dos host conectados a un switch que conforman el segmento de 
+La topología implementada consiste en:
+- Tres host simulados 
+- Una vitrualización de la distribución del sistema operativo linux llamado Tiny Linux Core en su versión 8.2.1
+- Dos switch capa 2
+- Un router c3725
+
+Estos dispositivos se dividen en dos segmentos de red, uno correspondiente a la direccióń 192.168.14.0 y otro a la dirección 192.168.19.0.
+
 
 ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/project.png)
 
 ## Configuración
 
-### Configuración de host
+### Configuración de Host Simulados
 Para realizar la configuración se debe tener el dispositivo encendido e ingresar por medio de la terminal. 
 
 1. Ejecutar el siguiente comando para verificar la información de red de la computadora: `show ip`
 
    ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host-step-1.png)
 
-2. Con el siguiente comando configurar la IP y la puerta de enlace:`ip <IP> <GATEWAY>`
+2. Con el siguiente comando configurar la IP y la puerta de enlace:`ip <IP> <GATEWAY>`. 
+
+   En este caso configuraremos el host simulado con ip 192.168.19.15
 
    ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host-step-2.png)
  
 3. Guardar la configuración con el comando `save `
 
    ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host-step-3.png)
-   
+
+
+Seguir los pasos indicados para configurar los dos host faltantes.
+
+#### Host con IP 192.168.19.15
+
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host2.png)
+
+#### Host con IP 192.168.19.30
+
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host3.png)
+
+
+### Configuración de Host Virtualizado
+1. Descargar la imagen ISO del sistema operativo [Tiny Linux](http://tinycorelinux.net/). Para el caso de esta práctica se ha utilizado la versión 8.2.1 
+
+2. Crear una máquina virtual con la imagen descargada.
+
+3. En GNS3, ir al panel de preferencias 
+
+4. En el panel de preferencias, seleccionar la sección de virtualbox VMs y dar clic en 'New'
+
+5. GNS3 listará las máquinas virtuales disponibles, seleccionar la máquina creada en el paso dos
+
+6. Seleccionar 'Apply' para guardar la configuración y luego 'Ok'
+
+Y listo, encontrará la maquina virtual en el panel de hosts.
+
 ### Configuración de Router
 Para realizar la configuración se debe tener el dispositivo encendido e ingresar por medio de la terminal. 
 
-1. Verificar el estado de las interfaces del router con el comando: 
-  ```sh ip int brief```
+1. Verificar el estado de las interfaces del router con el comando: `sh ip int brief`
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-1.png)
   
 2. Ejecutar siguiente comando para etrar al menú de configuración del router:
     ```conf t ```
+    
+    ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-2.png)
         
 3. Indicar la interfaz a configurar con el comando 
   ```int f0/ <x>```
-en donde x es el número identificador de la interfaz
+en donde x es el número identificador de la interfaz.
+En este caso configuraremos la interfaz f0/0 para el segmento de red 192.168.19.0
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-3.png)
+   
 4. Ejecutar el siguiente comando para configurar la IP de la interfaz:
   ```ip address <IP> <MASCARA DE RED>```
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-4.png)
+   
 5. Activar la interfaz con el comando 
   ```no shut```
 
-6. Salir de la configuración de la interfaz con el comando  `exit`
-  
-7. Configurar la segunda interfaz para el segmento de red 192.168.14.0 siguiendo los pasos anteriores
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-5.png)
 
-8. Salir de la configuración del router con el comando
-  ```exit```
-9. Guardar la configuración del router con el comando 
+6. Salir de la configuración de la interfaz con el comando  `exit`
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-6.png)
+  
+7. Configurar la interfaz f0/1 para el segmento de red 192.168.14.0 siguiendo los pasos anteriores
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-7.png)
+
+  
+8. Guardar la configuración del router con el comando 
   ```wr```
+   
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-8.png)
   
 Finalmente al ejecutar el comando `sh ip int brief` se puede observar el cambio de la configuración del router
 
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-final.png)
+
+
+### Agregar Imagen de Dispositivo Router a GNS3
+
+1. Descargar imagen de dispositivo
+
+2. Acceder al panel de preferencias
+
+3. En el panel de preferencias, seleccionar la sección de IOS Router y dar clic en 'New'
+
+4. Buscar la imagen descargada en el paso uno y dar clic en 'siguiente'
+
+5. En esta sección aparecerá la iformación del dispositivo. Dar clic en 'Siguiente'
+
+6. En esta sección se le asigna una cantidad de RAM, en este se dejará la cantidad de memoria sugerida.
+
+      Dar clic en 'Siguiente'
+
+7. En esta sección se configuran los adaptadores de red, en este caso se dejarán las configuraciones por defecto. 
+
+      Dar clic en 'Siguiente'
+
+8. En esta sección se configuran los modulos WIC, en este caso se dejarán las configuraciones por defecto. 
+
+      Dar clic en 'Siguiente'
+
+9. En esta sección aparece el identificador asignado por GNS3. 
+
+      Dar clic en 'Siguiente'
+      
+10. Seleccionar 'Apply' para guardar la configuración y luego 'Ok'
+
+Y listo, encontrará el dispositivo en el panel de routers.
+
+
+### Pruebas
+Para probar la comunicación entre los cuatro host se utiliza el comando [ping](https://linux.die.net/man/8/ping), el cual utiliza el protocolo ICMP para enviar paquetes con el objetivo de verificar la conectividad.
+A continuación se muestra la respuesta de la red al hacer ping desde cada uno de los host a todos los demás.
+
+
+#### Host con IP 192.168.19.30
+
+#### Host con IP 192.168.19.15
+
+#### Host con IP 192.168.14.15
+
+#### Host con IP 192.168.14.30
+
+
+####
+      
 ## Glosario
 
 ###### Red
