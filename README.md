@@ -4,11 +4,11 @@ Generación y configuración de una topología de red pequeña simulada en GNS3.
 ## Topología de Red
 La topología implementada consiste en:
 - Tres host simulados 
-- Una vitrualización de la distribución del sistema operativo linux llamado Tiny Linux Core en su versión 8.2.1
+- Una vitrualización de la distribución del sistema operativo linux llamado Tiny Linux Core en su versión 8.2.1 en virtualbox
 - Dos switch capa 2
 - Un router c3725
 
-Estos dispositivos se dividen en dos segmentos de red, uno correspondiente a la direccióń 192.168.14.0 y otro a la dirección 192.168.19.0.
+Estos dispositivos se dividen en dos segmentos de red, uno correspondiente a la direccióń 192.168.14.0 y otro a la dirección 192.168.19.0 conectados por medio de un router.
 
 
 ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/project.png)
@@ -35,11 +35,11 @@ Para realizar la configuración se debe tener el dispositivo encendido e ingresa
 
 Seguir los pasos indicados para configurar los dos host faltantes.
 
-#### Host con IP 192.168.19.15
+#### Host con IP 192.168.14.15
 
 ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host2.png)
 
-#### Host con IP 192.168.19.30
+#### Host con IP 192.168.14.30
 
 ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/host-config/host3.png)
 
@@ -49,15 +49,27 @@ Seguir los pasos indicados para configurar los dos host faltantes.
 
 2. Crear una máquina virtual con la imagen descargada.
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-vm/add-vm-2.png)
+
 3. En GNS3, ir al panel de preferencias 
 
-4. En el panel de preferencias, seleccionar la sección de virtualbox VMs y dar clic en 'New'
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/preferences-panel.png)
+
+4. En el panel de preferencias, seleccionar la sección de virtualbox VMs y dar clic en 'New'. En caso de que utilice VMware, seleccionar 'VMware VMs'.
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-vm/add-vm-4.png)
 
 5. GNS3 listará las máquinas virtuales disponibles, seleccionar la máquina creada en el paso dos
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-vm/add--vm-5.png)
+
 6. Seleccionar 'Apply' para guardar la configuración y luego 'Ok'
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-vm/add-vm-6.png)
+
 Y listo, encontrará la maquina virtual en el panel de hosts.
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-vm/add-vm-final.jpg)
 
 ### Configuración de Router
 Para realizar la configuración se debe tener el dispositivo encendido e ingresar por medio de la terminal. 
@@ -109,35 +121,55 @@ Finalmente al ejecutar el comando `sh ip int brief` se puede observar el cambio 
 
 ### Agregar Imagen de Dispositivo Router a GNS3
 
-1. Descargar imagen de dispositivo
+1. Descargar [imagen de dispositivo](https://ingenieriausacedu-my.sharepoint.com/personal/3003608000101_ingenieria_usac_edu_gt/_layouts/15/onedrive.aspx?id=%2Fpersonal%2F3003608000101%5Fingenieria%5Fusac%5Fedu%5Fgt%2FDocuments%2Fcompartida%2Fc3725%2Dadventerprisek9%2Dmz%2E124%2D25d%2Eimage&parent=%2Fpersonal%2F3003608000101%5Fingenieria%5Fusac%5Fedu%5Fgt%2FDocuments%2Fcompartida&originalPath=aHR0cHM6Ly9pbmdlbmllcmlhdXNhY2VkdS1teS5zaGFyZXBvaW50LmNvbS86dTovZy9wZXJzb25hbC8zMDAzNjA4MDAwMTAxX2luZ2VuaWVyaWFfdXNhY19lZHVfZ3QvRWR0M3RObHdseDVQcks0aEhUVkNwQndCZEJiWWFSZTJ6ZXhEUUpCNHdnMFkyUT9ydGltZT1fYktVeUc5QzJFZw)
 
 2. Acceder al panel de preferencias
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/preferences-panel.png)
+
 3. En el panel de preferencias, seleccionar la sección de IOS Router y dar clic en 'New'
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-3.png)
 
 4. Buscar la imagen descargada en el paso uno y dar clic en 'siguiente'
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-4.png)
+
 5. En esta sección aparecerá la iformación del dispositivo. Dar clic en 'Siguiente'
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-5.png)
 
 6. En esta sección se le asigna una cantidad de RAM, en este se dejará la cantidad de memoria sugerida.
 
       Dar clic en 'Siguiente'
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-6.png)
+
 7. En esta sección se configuran los adaptadores de red, en este caso se dejarán las configuraciones por defecto. 
 
       Dar clic en 'Siguiente'
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-7.png)
 
 8. En esta sección se configuran los modulos WIC, en este caso se dejarán las configuraciones por defecto. 
 
       Dar clic en 'Siguiente'
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-8.png)
+
 9. En esta sección aparece el identificador asignado por GNS3. 
 
       Dar clic en 'Siguiente'
-      
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-9.png)
+
 10. Seleccionar 'Apply' para guardar la configuración y luego 'Ok'
 
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-10.png)
+
 Y listo, encontrará el dispositivo en el panel de routers.
+
+   ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-router/add-router-final.jpg)
 
 
 ### Pruebas
