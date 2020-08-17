@@ -4,7 +4,7 @@ Generación y configuración de una topología de red pequeña simulada en GNS3.
 ## Topología de Red
 La topología implementada consiste en:
 - Tres host simulados 
-- Una vitrualización de la distribución del sistema operativo linux llamado Tiny Linux Core en su versión 8.2.1 en virtualbox
+- Una vitrualización en virtualbox de la distribución del sistema operativo linux llamado Tiny Linux Core en su versión 8.2.1
 - Dos switch capa 2
 - Un router c3725
 
@@ -71,6 +71,30 @@ Y listo, encontrará la maquina virtual en el panel de hosts.
 
    ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/add-vm/add-vm-final.jpg)
 
+#### Configuración de IP estática.
+Para ver la información de red ejecutar el comando 
+`ifconfig`
+
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/vm-ip-1.png)
+
+Para configurar la [IP estática](https://danielmiessler.com/study/manually-set-ip-linux/) en la máquina virtual se utiliza el siguiente comando
+
+`ipconfig <NAME INTERFACE> < IP> netmask <MASK> up`
+
+En donde:
+- NAME INTERFACE: Es el nombre de la interfaz
+- IP: Es la dirección IP a asignar
+-MASK: Es la máscara de red
+
+Además se debe establecer la puerta de enlace con el siguiente comando: 
+
+`route add default gateway <GATEWAY>`
+
+Y listo, la configuración de la IP estática en tiempo de ejecución se configuró correctamente.
+
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/vm-ip-2.png)
+
+
 ### Configuración de Router
 Para realizar la configuración se debe tener el dispositivo encendido e ingresar por medio de la terminal. 
 
@@ -84,7 +108,7 @@ Para realizar la configuración se debe tener el dispositivo encendido e ingresa
     ![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/router-config/router-step-2.png)
         
 3. Indicar la interfaz a configurar con el comando 
-  ```int f0/ <x>```
+  ```int f0/<x>```
 en donde x es el número identificador de la interfaz.
 En este caso configuraremos la interfaz f0/0 para el segmento de red 192.168.19.0
 
@@ -173,17 +197,27 @@ Y listo, encontrará el dispositivo en el panel de routers.
 
 
 ### Pruebas
-Para probar la comunicación entre los cuatro host se utiliza el comando [ping](https://linux.die.net/man/8/ping), el cual utiliza el protocolo ICMP para enviar paquetes con el objetivo de verificar la conectividad.
+Para probar la comunicación entre los cuatro host se utilizaran paquetes ICMP por medio del comando [ping](https://linux.die.net/man/8/ping) con el objetivo de verificar la conectividad.
 A continuación se muestra la respuesta de la red al hacer ping desde cada uno de los host a todos los demás.
 
 
 #### Host con IP 192.168.19.30
 
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/ping/ping-14-30-1.png)
+
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/ping/ping-14-30-2.png)
+
 #### Host con IP 192.168.19.15
+
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/ping/ping-19-15.png)
 
 #### Host con IP 192.168.14.15
 
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/ping/ping-14-15.png)
+
 #### Host con IP 192.168.14.30
+
+![image](https://github.com/EmmGarci4/Redes1-Practica1_201610649/blob/master/images-readme/ping/ping-14-30.png)
 
 
 ####
@@ -193,11 +227,22 @@ A continuación se muestra la respuesta de la red al hacer ping desde cada uno d
 ###### Red
 La red informática nombra al conjunto de computadoras y otros equipos interconectados, que comparten información, recursos y servicios. Puede a su vez dividirse en diversas categorías, según su alcance, su método de conexión o su relación funcional, entre otras.
 
+###### Topología de Red
+Es el mapa físico o lógico de una red para intercambiar datos. En otras palabras, es la forma en que está diseñada la red, sea en el plano físico o lógico. El concepto de red puede definirse como «conjunto de nodos interconectados». Un nodo es el punto en el que una curva se intercepta a sí misma. Lo que un nodo es concretamente depende del tipo de red en cuestión.
+
+###### LAN
+LAN es la abreviatura de Local Area Network. Denomina redes con extensión física limitada. La mayoría de las redes LAN se usan en hogares privados o en empresas, para instalar redes de hogar o de empresa. De este modo, distintos dispositivos pueden comunicarse entre ellos. De este modo, el intercambio de datos tiene lugar primero a nivel local.
+
 ###### Host
 Un host o anfitrión es un dispositivo que funciona como el punto de inicio y final de las transferencias de datos. 
 
 ###### Switch
 Un switch o conmutador es un dispositivo de interconexión utilizado para conectar equipos en red formando lo que se conoce como una red de área local (LAN) y cuyas especificaciones técnicas siguen el estándar conocido como Ethernet (IEEE 802.3). En la actualidad las redes locales cableadas siguen el estándar Ethernet donde se utiliza una topología en estrella y donde el switch es el elemento central de dicha topología.
+
+###### Switch Capa 2
+Son los conmutadores tradicionales, que funcionan como puentes multi-puertos. Su principal finalidad es dividir una LAN en múltiples dominios de colisión, o en los casos de las redes en anillo, segmentar la LAN en diversos anillos. Basan su decisión de envío en la dirección MAC destino que contiene cada trama.
+
+Los conmutadores de la capa 2 posibilitan múltiples transmisiones simultáneas sin interferir en otras sub-redes. Los switches de capa 2 no consiguen, sin embargo, filtrar difusiones o broadcasts, multicasts (en el caso en que más de una sub-red contenga las estaciones pertenecientes al grupo multicast de destino), ni tramas cuyo destino aún no haya sido incluido en la tabla de direccionamiento. 
 
 ###### Router
 Es un dispositivo que permite interconectar computadoras que funcionan en el marco de una red. Su función es de establecer la ruta que destinará a cada paquete de datos dentro de una red informática. 
@@ -215,10 +260,13 @@ La dirección MAC es un identificador único que cada fabricante le asigna a la 
 
 Las direcciones MAC están formadas por 48 bits representados generalmente por dígitos hexadecimales. Como cada hexadecimal equivale a cuatro binarios (48:4=12), la dirección acaba siendo formada por 12 dígitos agrupados en seis parejas separadas.
 
-###### Termino 
-Pellentesque ut dignissim sapien. Nam vulputate, enim eget ornare lobortis, risus erat vehicula tortor, at iaculis massa velit in tortor. Vivamus iaculis risus nec sem porta, posuere auctor massa dapibus. Ut hendrerit facilisis volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus porttitor ex at lectus sollicitudin ultricies. Sed mauris elit, lobortis at sapien ac, faucibus facilisis elit. Vivamus a ligula at nunc facilisis aliquet. 
-###### Termino
-Pellentesque ut dignissim sapien. Nam vulputate, enim eget ornare lobortis, risus erat vehicula tortor, at iaculis massa velit in tortor. Vivamus iaculis risus nec sem porta, posuere auctor massa dapibus. Ut hendrerit facilisis volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus porttitor ex at lectus sollicitudin ultricies. Sed mauris elit, lobortis at sapien ac, faucibus facilisis elit. Vivamus a ligula at nunc facilisis aliquet. 
-###### Termino
-Pellentesque ut dignissim sapien. Nam vulputate, enim eget ornare lobortis, risus erat vehicula tortor, at iaculis massa velit in tortor. Vivamus iaculis risus nec sem porta, posuere auctor massa dapibus. Ut hendrerit facilisis volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus porttitor ex at lectus sollicitudin ultricies. Sed mauris elit, lobortis at sapien ac, faucibus facilisis elit. Vivamus a ligula at nunc facilisis aliquet. 
+###### Gateway 
+Un gateway o puerta de enlace es un dispositivo que permite interconectar redes con protocolos y arquitecturas diferentes a todos los niveles de comunicación. Su propósito es traducir la información del protocolo utilizado en una red al protocolo usado en la red de destino.
+
+###### Protocolo ICMP
+Internet Control Message Protocol o protocolo de mensajes de control de Internet es un protocolo que informa errores e intercambia mensajes de control. Es útil para diagnosticar problemas de red.
+
+###### paquete ICMP echo request
+Paquete que se envía a un sistema en Internet para solicitar una respuesta. Esos paquetes son conocidos comúnmente como paquetes "ping" y se utilizan para probar el alcance de los hosts en una red IP.
+
 
